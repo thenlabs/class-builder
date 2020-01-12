@@ -1,0 +1,15 @@
+<phpunit bootstrap="bootstrap.php">
+    <extensions>
+        <extension class="Andaniel05\PyramidalTests\Extension"></extension>
+    </extensions>
+
+    <php>
+        <env name="PYRAMIDAL_ONLY" value="1"></env>
+    </php>
+
+    <testsuites>
+        <testsuite name="Main">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

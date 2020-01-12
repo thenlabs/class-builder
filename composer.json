@@ -1,0 +1,34 @@
+{
+    "name": "nubeculabs/class-builder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andy Daniel Navarro Taño",
+            "email": "andaniel05@gmail.com"
+        },
+        {
+            "name": "NubecuLabs Community"
+        }
+    ],
+    "platform": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.12",
+        "andaniel05/pyramidaltests": "dev-master",
+        "doctrine/annotations": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "NubecuLabs\\ClassBuilder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NubecuLabs\\ClassBuilder\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "nubeculabs/components": "dev-master"
+    }
+}
