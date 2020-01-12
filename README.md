@@ -19,7 +19,7 @@ Esta manera de crear clases no viene a sustituir **en ningún caso** la manera e
 
 Se require PHP >= 7.2.
 
-    $ composer require nubeculabs/class-builder
+    $ composer require nubeculabs/class-builder dev-master
 
 >Si se va a emplear para pruebas unitarias sobre el diseño de clases, es muy recomendable que especifique la opción `--dev`.
 
