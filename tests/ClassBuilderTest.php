@@ -1,18 +1,18 @@
 <?php
 
-namespace NubecuLabs\ClassBuilder\Tests;
+namespace ThenLabs\ClassBuilder\Tests;
 
-use NubecuLabs\ClassBuilder\ClassBuilder;
-use NubecuLabs\ClassBuilder\Exception\InvalidClassNameException;
-use NubecuLabs\ClassBuilder\Exception\InvalidConstantNameException;
-use NubecuLabs\ClassBuilder\Exception\InvalidMethodNameException;
-use NubecuLabs\ClassBuilder\Exception\InvalidPropertyNameException;
-use NubecuLabs\ClassBuilder\Exception\InvalidNamespaceException;
-use NubecuLabs\ClassBuilder\Exception\InvalidAccessException;
-use NubecuLabs\ClassBuilder\Exception\ExistentClassException;
-use NubecuLabs\ClassBuilder\Exception\UnexistentClassException;
-use NubecuLabs\ClassBuilder\Exception\UnexistentInterfaceException;
-use NubecuLabs\ClassBuilder\Exception\UnexistentTraitException;
+use ThenLabs\ClassBuilder\ClassBuilder;
+use ThenLabs\ClassBuilder\Exception\InvalidClassNameException;
+use ThenLabs\ClassBuilder\Exception\InvalidConstantNameException;
+use ThenLabs\ClassBuilder\Exception\InvalidMethodNameException;
+use ThenLabs\ClassBuilder\Exception\InvalidPropertyNameException;
+use ThenLabs\ClassBuilder\Exception\InvalidNamespaceException;
+use ThenLabs\ClassBuilder\Exception\InvalidAccessException;
+use ThenLabs\ClassBuilder\Exception\ExistentClassException;
+use ThenLabs\ClassBuilder\Exception\UnexistentClassException;
+use ThenLabs\ClassBuilder\Exception\UnexistentInterfaceException;
+use ThenLabs\ClassBuilder\Exception\UnexistentTraitException;
 use Doctrine\Common\Annotations\AnnotationReader;
 use ReflectionClass;
 use Closure;

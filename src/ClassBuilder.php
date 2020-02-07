@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace NubecuLabs\ClassBuilder;
+namespace ThenLabs\ClassBuilder;
 
 use Closure;
 use DateTime;
-use NubecuLabs\ClassBuilder\Model\CommentTrait;
-use NubecuLabs\ClassBuilder\Model\AbstractTrait;
-use NubecuLabs\ClassBuilder\Model\Property;
-use NubecuLabs\ClassBuilder\Model\Constant;
-use NubecuLabs\ClassBuilder\Model\Method;
-use NubecuLabs\ClassBuilder\Model\TraitMember;
+use ThenLabs\ClassBuilder\Model\CommentTrait;
+use ThenLabs\ClassBuilder\Model\AbstractTrait;
+use ThenLabs\ClassBuilder\Model\Property;
+use ThenLabs\ClassBuilder\Model\Constant;
+use ThenLabs\ClassBuilder\Model\Method;
+use ThenLabs\ClassBuilder\Model\TraitMember;
 
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>

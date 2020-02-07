@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace NubecuLabs\ClassBuilder\Model;
+namespace ThenLabs\ClassBuilder\Model;
 
-use NubecuLabs\ClassBuilder\ClassBuilder;
+use ThenLabs\ClassBuilder\ClassBuilder;
 
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>

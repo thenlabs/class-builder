@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace NubecuLabs\ClassBuilder\Tests;
+namespace ThenLabs\ClassBuilder\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 

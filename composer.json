@@ -1,5 +1,5 @@
 {
-    "name": "nubeculabs/class-builder",
+    "name": "thenlabs/class-builder",
     "license": "MIT",
     "authors": [
         {
@@ -7,7 +7,7 @@
             "email": "andaniel05@gmail.com"
         },
         {
-            "name": "NubecuLabs Community"
+            "name": "ThenLabs Community"
         }
     ],
     "platform": {
@@ -20,15 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "NubecuLabs\\ClassBuilder\\": "src/"
+            "ThenLabs\\ClassBuilder\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "NubecuLabs\\ClassBuilder\\Tests\\": "tests/"
+            "ThenLabs\\ClassBuilder\\Tests\\": "tests/"
         }
-    },
-    "require": {
-        "nubeculabs/components": "dev-master"
     }
 }

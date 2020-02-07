@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace NubecuLabs\ClassBuilder;
+namespace ThenLabs\ClassBuilder;
 
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>

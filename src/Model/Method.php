@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace NubecuLabs\ClassBuilder\Model;
+namespace ThenLabs\ClassBuilder\Model;
 
 use ReflectionFunction;
 use Closure;
@@ -124,7 +124,7 @@ class Method extends AbstractClassMember
                 $return = '';
             }
 
-            $closureStr = "\$closure = \\NubecuLabs\\ClassBuilder\\ClassBuilder::getInstalledInstances()['{$fcqn}']->getMethod('{$this->name}')->getClosure();\n";
+            $closureStr = "\$closure = \\ThenLabs\\ClassBuilder\\ClassBuilder::getInstalledInstances()['{$fcqn}']->getMethod('{$this->name}')->getClosure();\n";
             $body = "{
                 {$closureStr}
                 {$return} \$closure->call(\$this {$callParamStr});
