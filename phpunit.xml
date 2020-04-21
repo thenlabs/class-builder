@@ -1,6 +1,6 @@
 <phpunit bootstrap="bootstrap.php">
     <extensions>
-        <extension class="Andaniel05\PyramidalTests\Extension"></extension>
+        <extension class="ThenLabs\PyramidalTests\Extension"></extension>
     </extensions>
 
     <php>

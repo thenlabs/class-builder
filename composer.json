@@ -16,7 +16,7 @@
     "require": {},
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.12",
-        "andaniel05/pyramidaltests": "dev-master",
+        "thenlabs/pyramidal-tests": "dev-master",
         "doctrine/annotations": "^1.8"
     },
     "autoload": {
