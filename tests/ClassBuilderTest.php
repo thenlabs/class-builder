@@ -1623,5 +1623,11 @@ testCase('ClassBuilderTest.php', function () {
             $this->assertEquals($name2, $person2->getName());
             $this->assertEquals($age2, $person2->getAge());
         });
+
+        test('$builder->install() returns the same builder', function () {
+            $builder = new ClassBuilder;
+
+            $this->assertSame($builder, $builder->install());
+        });
     });
 });

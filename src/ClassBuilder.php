@@ -227,7 +227,7 @@ class ClassBuilder
         return $this->getFCQN();
     }
 
-    public function install(): void
+    public function install(): self
     {
         $fcqn = $this->getFCQN();
         if (class_exists($fcqn)) {
@@ -237,6 +237,8 @@ class ClassBuilder
         eval($this->getCode());
 
         self::$installedInstances[$fcqn] = $this;
+
+        return $this;
     }
 
     public function newInstance(...$args): object
