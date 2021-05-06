@@ -1309,19 +1309,36 @@ testCase('ClassBuilderTest.php', function () {
                         $this->assertTrue($type->allowsNull());
                     });
 
-                    test('the return type may be sets by setReturnType()', function () {
-                        $this->methodBuilder->setClosure(function (): ?callable {
+                    testCase('the return type may be sets by setReturnType()', function () {
+                        test('$methodBuilder->setReturnType("?string")', function () {
+                            $this->methodBuilder->setClosure(function (): ?callable {
+                            });
+
+                            $this->methodBuilder->setReturnType('?string');
+
+                            $this->assertSame('?string', $this->methodBuilder->getReturnType());
+
+                            $this->installAndReflectTheMethod();
+
+                            $type = $this->reflectionMethod->getReturnType();
+                            $this->assertEquals('string', (string) $type);
+                            $this->assertTrue($type->allowsNull());
                         });
 
-                        $this->methodBuilder->setReturnType('?string');
+                        test('$methodBuilder->setReturnType("void")', function () {
+                            $this->methodBuilder->setClosure(function (): ?callable {
+                            });
 
-                        $this->assertSame('?string', $this->methodBuilder->getReturnType());
+                            $this->methodBuilder->setReturnType('void');
 
-                        $this->installAndReflectTheMethod();
+                            $this->assertSame('void', $this->methodBuilder->getReturnType());
 
-                        $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('string', (string) $type);
-                        $this->assertTrue($type->allowsNull());
+                            $this->installAndReflectTheMethod();
+
+                            $type = $this->reflectionMethod->getReturnType();
+                            $this->assertEquals('void', (string) $type);
+                            $this->assertFalse($type->allowsNull());
+                        });
                     });
                 });
 

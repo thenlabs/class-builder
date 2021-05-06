@@ -134,7 +134,8 @@ class Method extends AbstractClassMember
             }
 
             $return = 'return';
-            if ($returnType instanceof \ReflectionType &&
+            if ('void' === $this->returnType ||
+                $returnType instanceof \ReflectionType &&
                 strval($returnType) == 'void'
             ) {
                 $return = '';
