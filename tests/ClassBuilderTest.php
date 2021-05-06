@@ -1308,6 +1308,21 @@ testCase('ClassBuilderTest.php', function () {
                         $this->assertEquals('callable', (string) $type);
                         $this->assertTrue($type->allowsNull());
                     });
+
+                    test('the return type may be sets by setReturnType()', function () {
+                        $this->methodBuilder->setClosure(function (): ?callable {
+                        });
+
+                        $this->methodBuilder->setReturnType('?string');
+
+                        $this->assertSame('?string', $this->methodBuilder->getReturnType());
+
+                        $this->installAndReflectTheMethod();
+
+                        $type = $this->reflectionMethod->getReturnType();
+                        $this->assertEquals('string', (string) $type);
+                        $this->assertTrue($type->allowsNull());
+                    });
                 });
 
                 testCase('the method has the same parameters that the closure', function () {

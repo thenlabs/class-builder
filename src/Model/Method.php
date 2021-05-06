@@ -18,6 +18,8 @@ class Method extends AbstractClassMember
 
     protected $closure;
 
+    protected $returnType;
+
     public function setClosure(Closure $closure): self
     {
         $this->closure = $closure;
@@ -28,6 +30,18 @@ class Method extends AbstractClassMember
     public function getClosure(): Closure
     {
         return $this->closure;
+    }
+
+    public function getReturnType(): ?string
+    {
+        return $this->returnType;
+    }
+
+    public function setReturnType(?string $returnType): self
+    {
+        $this->returnType = $returnType;
+
+        return $this;
     }
 
     public function getCode(): string
@@ -42,7 +56,7 @@ class Method extends AbstractClassMember
         }
 
         $returnType = null;
-        $returnTypeStr = '';
+        $returnTypeStr = $this->returnType ? ": {$this->returnType}" : '';
 
         $parameters = [];
         $parametersStr = [];
@@ -50,18 +64,20 @@ class Method extends AbstractClassMember
         if ($this->closure instanceof Closure) {
             $reflectionFunction = new ReflectionFunction($this->closure);
 
-            $returnType = $reflectionFunction->getReturnType();
-            if ($returnType) {
-                $returnTypeStr = strval($returnType);
+            if (! $returnTypeStr) {
+                $returnType = $reflectionFunction->getReturnType();
+                if ($returnType) {
+                    $returnTypeStr = strval($returnType);
 
-                if (! $returnType->isBuiltin() && $returnTypeStr != 'self') {
-                    $returnTypeStr = '\\' . $returnTypeStr;
-                }
+                    if (! $returnType->isBuiltin() && $returnTypeStr != 'self') {
+                        $returnTypeStr = '\\' . $returnTypeStr;
+                    }
 
-                if ($returnType->allowsNull()) {
-                    $returnTypeStr = ': ?' . $returnTypeStr;
-                } else {
-                    $returnTypeStr = ': ' . $returnTypeStr;
+                    if ($returnType->allowsNull()) {
+                        $returnTypeStr = ': ?' . $returnTypeStr;
+                    } else {
+                        $returnTypeStr = ': ' . $returnTypeStr;
+                    }
                 }
             }
 
