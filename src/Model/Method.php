@@ -95,7 +95,7 @@ class Method extends AbstractClassMember
                 if ($parameter->hasType()) {
                     $type = $parameter->getType();
 
-                    $typeName = (string) $type;
+                    $typeName = $type->getName();
                     if (! $type->isBuiltin()) {
                         $typeName = '\\' . $typeName;
                     }
