@@ -18,6 +18,8 @@
 
 <br>
 
+Example:
+
 ```php
 <?php
 
@@ -44,9 +46,7 @@ $andy->getName() === 'Andy';            // true
 $andy instanceof \ThenLabs\Demo\Person; // true
 ```
 
-## 🔌 Installation.
-
-    $ composer require thenlabs/class-builder
+The above example shows the way to create a PHP class dinamically across the `ClassBuilder`. Learn more in the docs.
 
 ## 📖 Documentation.
 
