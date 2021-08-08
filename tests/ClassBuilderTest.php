@@ -1217,7 +1217,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('void', (string) $type);
+                        $this->assertEquals('void', $type->getName());
                         $this->assertFalse($type->allowsNull());
                     });
 
@@ -1228,7 +1228,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('string', (string) $type);
+                        $this->assertEquals('string', $type->getName());
                         $this->assertFalse($type->allowsNull());
                     });
 
@@ -1239,7 +1239,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('float', (string) $type);
+                        $this->assertEquals('float', $type->getName());
                         $this->assertTrue($type->allowsNull());
                     });
 
@@ -1250,7 +1250,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('array', (string) $type);
+                        $this->assertEquals('array', $type->getName());
                         $this->assertTrue($type->allowsNull());
                     });
 
@@ -1261,7 +1261,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('object', (string) $type);
+                        $this->assertEquals('object', $type->getName());
                         $this->assertTrue($type->allowsNull());
                     });
 
@@ -1272,7 +1272,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('iterable', (string) $type);
+                        $this->assertEquals('iterable', $type->getName());
                         $this->assertTrue($type->allowsNull());
                     });
 
@@ -1283,7 +1283,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('self', (string) $type);
+                        $this->assertEquals('self', $type->getName());
                         $this->assertTrue($type->allowsNull());
                     });
 
@@ -1294,7 +1294,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('stdClass', (string) $type);
+                        $this->assertEquals('stdClass', $type->getName());
                         $this->assertTrue($type->allowsNull());
                     });
 
@@ -1305,7 +1305,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->installAndReflectTheMethod();
 
                         $type = $this->reflectionMethod->getReturnType();
-                        $this->assertEquals('callable', (string) $type);
+                        $this->assertEquals('callable', $type->getName());
                         $this->assertTrue($type->allowsNull());
                     });
 
@@ -1321,7 +1321,7 @@ testCase('ClassBuilderTest.php', function () {
                             $this->installAndReflectTheMethod();
 
                             $type = $this->reflectionMethod->getReturnType();
-                            $this->assertEquals('string', (string) $type);
+                            $this->assertEquals('string', $type->getName());
                             $this->assertTrue($type->allowsNull());
                         });
 
@@ -1336,7 +1336,7 @@ testCase('ClassBuilderTest.php', function () {
                             $this->installAndReflectTheMethod();
 
                             $type = $this->reflectionMethod->getReturnType();
-                            $this->assertEquals('void', (string) $type);
+                            $this->assertEquals('void', $type->getName());
                             $this->assertFalse($type->allowsNull());
                         });
                     });
@@ -1380,7 +1380,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->assertEquals('arg2', $param2->getName());
                         $this->assertTrue($param2->isOptional());
                         $this->assertTrue($param2->hasType());
-                        $this->assertEquals('string', (string) $type2);
+                        $this->assertEquals('string', $type2->getName());
                         $this->assertTrue($param2->allowsNull());
                         $this->assertFalse($param2->isPassedByReference());
 
@@ -1390,7 +1390,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->assertTrue($param3->isOptional());
                         $this->assertTrue($param3->hasType());
                         $this->assertTrue($param3->isArray());
-                        $this->assertEquals('array', (string) $type3);
+                        $this->assertEquals('array', $type3->getName());
                         $this->assertFalse($param3->allowsNull());
                         $this->assertFalse($param3->isPassedByReference());
 
@@ -1399,7 +1399,7 @@ testCase('ClassBuilderTest.php', function () {
                         $this->assertEquals('arg4', $param4->getName());
                         $this->assertTrue($param4->isOptional());
                         $this->assertTrue($param4->hasType());
-                        $this->assertEquals(DummyClass::class, (string) $type3);
+                        $this->assertEquals(DummyClass::class, $type3->getName());
                         $this->assertTrue($param4->allowsNull());
                         $this->assertFalse($param4->isPassedByReference());
                     });
