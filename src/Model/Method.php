@@ -67,7 +67,7 @@ class Method extends AbstractClassMember
             if (! $returnTypeStr) {
                 $returnType = $reflectionFunction->getReturnType();
                 if ($returnType) {
-                    $returnTypeStr = strval($returnType);
+                    $returnTypeStr = $returnType->getName();
 
                     if (! $returnType->isBuiltin() && $returnTypeStr != 'self') {
                         $returnTypeStr = '\\' . $returnTypeStr;
@@ -136,7 +136,7 @@ class Method extends AbstractClassMember
             $return = 'return';
             if ('void' === $this->returnType ||
                 $returnType instanceof \ReflectionType &&
-                strval($returnType) == 'void'
+                $returnType->getName() == 'void'
             ) {
                 $return = '';
             }
