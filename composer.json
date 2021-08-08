@@ -7,7 +7,9 @@
             "email": "andaniel05@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php" : "~7.2"
+    },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.12",
         "thenlabs/pyramidal-tests": "^1.0",
