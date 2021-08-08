@@ -49,7 +49,7 @@ $andy instanceof \ThenLabs\Demo\Person; // true
 ## 📖 Documentation.
 
 1. 🇬🇧 English (Pending)
-2. [🇪🇸 Español](https://thenlabs.org/es/doc/components/master/index.html)
+2. [🇪🇸 Español](https://thenlabs.org/es/doc/class-builder/master/index.html)
 
 ## 🧪 Running the tests.
 
