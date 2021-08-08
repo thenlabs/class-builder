@@ -18,7 +18,7 @@
 
 <br>
 
-The next example shows a way to create dinamically a PHP class using our ClassBuilder. Learn more in the documentation.
+The next example shows a way to create dinamically a PHP class using our `ClassBuilder`. Learn more in the documentation.
 
 ```php
 <?php
