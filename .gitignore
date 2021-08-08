@@ -3,3 +3,4 @@ vendor/
 !.editorconfig
 !.gitignore
 !.php_cs.dist
+!.travis.yml

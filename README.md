@@ -1,10 +1,10 @@
 <div align="center">
     <a href="https://github.com/thenlabs/class-builder/blob/v1/LICENSE.txt" target="_blank">
-        <img src="https://img.shields.io/github/license/thenlabs/components?style=for-the-badge">
+        <img src="https://img.shields.io/github/license/thenlabs/class-builder?style=for-the-badge">
     </a>
-    <img src="https://img.shields.io/packagist/php-v/thenlabs/components?style=for-the-badge">
-    <a href="https://travis-ci.com/github/thenlabs/components" target="_blank">
-        <img src="https://img.shields.io/travis/com/thenlabs/components?style=for-the-badge">
+    <img src="https://img.shields.io/packagist/php-v/thenlabs/class-builder?style=for-the-badge">
+    <a href="https://travis-ci.com/github/thenlabs/class-builder" target="_blank">
+        <img src="https://img.shields.io/travis/com/thenlabs/class-builder?style=for-the-badge">
     </a>
     <a href="https://twitter.com/ThenLabsOrg" target="_blank">
         <img src="https://img.shields.io/twitter/follow/thenlabs?style=for-the-badge">
