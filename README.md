@@ -18,7 +18,7 @@
 
 <br>
 
-Example:
+The next example shows a way to create dinamically a PHP class using our ClassBuilder. Learn more in the documentation.
 
 ```php
 <?php
@@ -45,8 +45,6 @@ $andy = new Person('Andy');
 $andy->getName() === 'Andy';            // true
 $andy instanceof \ThenLabs\Demo\Person; // true
 ```
-
-The above example shows the way to create a PHP class dinamically across the `ClassBuilder`. Learn more in the docs.
 
 ## 📖 Documentation.
 
