@@ -27,4 +27,9 @@ abstract class AbstractClassMember
     {
         return $this->builder;
     }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }

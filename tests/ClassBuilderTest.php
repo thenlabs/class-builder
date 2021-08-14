@@ -7,6 +7,7 @@ use ThenLabs\ClassBuilder\Exception\InvalidClassNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidConstantNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidMethodNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidPropertyNameException;
+use ThenLabs\ClassBuilder\Exception\InvalidPropertyTypeException;
 use ThenLabs\ClassBuilder\Exception\InvalidNamespaceException;
 use ThenLabs\ClassBuilder\Exception\InvalidAccessException;
 use ThenLabs\ClassBuilder\Exception\ExistentClassException;
@@ -16,7 +17,6 @@ use ThenLabs\ClassBuilder\Exception\UnexistentTraitException;
 use Doctrine\Common\Annotations\AnnotationReader;
 use ReflectionClass;
 use Closure;
-
 setTestCaseClass(TestCase::class);
 setTestCaseNamespace(__NAMESPACE__);
 
@@ -632,6 +632,14 @@ testCase('ClassBuilderTest.php', function () {
                 $this->property->setAccess($invalidAccess);
             });
 
+            test('$property->setType("abcdef") throwns an InvalidPropertyTypeException', function () {
+                $type = uniqid();
+                $this->expectException(InvalidPropertyTypeException::class);
+                $this->expectExceptionMessage("Invalid type '{$type}' for property '{$this->property->getName()}'.");
+
+                $this->property->setType($type);
+            });
+
             testCase('$property->setAccess("public")', function () {
                 setUp(function () {
                     $this->result = $this->property->setAccess('public');
@@ -695,6 +703,22 @@ testCase('ClassBuilderTest.php', function () {
                     });
                 });
             });
+
+            // testCase('$property->setType()', function () {
+            //     setUp(function () {
+            //         $this->result = $this->property->setType('boolean');
+            //     });
+
+            //     useMacro('returns the same property builder');
+
+            //     useMacro('ends, install and reflect the class', function () {
+            //         test('the defined property is static', function () {
+            //             $property = $this->reflection->getProperty($this->propertyName);
+
+            //             $this->assertTrue($property->isStatic());
+            //         });
+            //     });
+            // });
 
             foreach (VALUES as $value) {
                 $description = var_export($value, true);

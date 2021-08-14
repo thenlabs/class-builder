@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace ThenLabs\ClassBuilder;
 
 use Closure;
-use DateTime;
 use ThenLabs\ClassBuilder\Model\CommentTrait;
 use ThenLabs\ClassBuilder\Model\AbstractTrait;
 use ThenLabs\ClassBuilder\Model\Property;

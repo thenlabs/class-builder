@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ThenLabs\ClassBuilder\Model;
 
+use ThenLabs\ClassBuilder\Exception\InvalidPropertyTypeException;
+
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
  */
@@ -12,6 +14,8 @@ class Property extends AbstractClassMember
     use ValueTrait { setValue as setDefaultValue; }
     use AccessTrait;
     use StaticTrait;
+
+    protected $type;
 
     public function getCode(): string
     {
@@ -28,5 +32,17 @@ class Property extends AbstractClassMember
         }
 
         return "{$comments} {$this->access} {$static} \${$this->name} {$value};";
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): void
+    {
+        throw new InvalidPropertyTypeException($type, $this->name);
+
+        $this->type = $type;
     }
 }
