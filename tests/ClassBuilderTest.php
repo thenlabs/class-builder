@@ -695,61 +695,62 @@ testCase('ClassBuilderTest.php', function () {
                 });
             });
 
-            testCase('$property->setType("string")', function () {
-                setUp(function () {
-                    // $this->property->setValue('');
-                    $this->result = $this->property->setType('string');
-                });
+            if (version_compare(PHP_VERSION, '7.4.0', '>=')) {
+                testCase('$property->setType("string")', function () {
+                    setUp(function () {
+                        $this->result = $this->property->setType('string');
+                    });
 
-                useMacro('returns the same property builder');
+                    useMacro('returns the same property builder');
 
-                useMacro('ends, install and reflect the class', function () {
-                    test('the defined property type is string', function () {
-                        $property = $this->reflection->getProperty($this->propertyName);
-                        $propertyType = $property->getType();
+                    useMacro('ends, install and reflect the class', function () {
+                        test('the defined property type is string', function () {
+                            $property = $this->reflection->getProperty($this->propertyName);
+                            $propertyType = $property->getType();
 
-                        $this->assertEquals('string', $propertyType->getName());
-                        $this->assertFalse($propertyType->allowsNull());
+                            $this->assertEquals('string', $propertyType->getName());
+                            $this->assertFalse($propertyType->allowsNull());
+                        });
                     });
                 });
-            });
 
-            testCase('$property->setType("?int")', function () {
-                setUp(function () {
-                    $this->property->setValue(0);
-                    $this->result = $this->property->setType('?int');
-                });
+                testCase('$property->setType("?int")', function () {
+                    setUp(function () {
+                        $this->property->setValue(0);
+                        $this->result = $this->property->setType('?int');
+                    });
 
-                useMacro('returns the same property builder');
+                    useMacro('returns the same property builder');
 
-                useMacro('ends, install and reflect the class', function () {
-                    test('the defined property type is ?int', function () {
-                        $property = $this->reflection->getProperty($this->propertyName);
-                        $propertyType = $property->getType();
+                    useMacro('ends, install and reflect the class', function () {
+                        test('the defined property type is ?int', function () {
+                            $property = $this->reflection->getProperty($this->propertyName);
+                            $propertyType = $property->getType();
 
-                        $this->assertEquals('int', $propertyType->getName());
-                        $this->assertTrue($propertyType->allowsNull());
+                            $this->assertEquals('int', $propertyType->getName());
+                            $this->assertTrue($propertyType->allowsNull());
+                        });
                     });
                 });
-            });
 
-            testCase('$property->setType("?\ThenLabs\ClassBuilder\Tests\DummyClass")', function () {
-                setUp(function () {
-                    $this->result = $this->property->setType("?\ThenLabs\ClassBuilder\Tests\DummyClass");
-                });
+                testCase('$property->setType("?\ThenLabs\ClassBuilder\Tests\DummyClass")', function () {
+                    setUp(function () {
+                        $this->result = $this->property->setType("?\ThenLabs\ClassBuilder\Tests\DummyClass");
+                    });
 
-                useMacro('returns the same property builder');
+                    useMacro('returns the same property builder');
 
-                useMacro('ends, install and reflect the class', function () {
-                    test('the defined property type is ?\ThenLabs\ClassBuilder\Tests\DummyClass', function () {
-                        $property = $this->reflection->getProperty($this->propertyName);
-                        $propertyType = $property->getType();
+                    useMacro('ends, install and reflect the class', function () {
+                        test('the defined property type is ?\ThenLabs\ClassBuilder\Tests\DummyClass', function () {
+                            $property = $this->reflection->getProperty($this->propertyName);
+                            $propertyType = $property->getType();
 
-                        $this->assertEquals(DummyClass::class, $propertyType->getName());
-                        $this->assertTrue($propertyType->allowsNull());
+                            $this->assertEquals(DummyClass::class, $propertyType->getName());
+                            $this->assertTrue($propertyType->allowsNull());
+                        });
                     });
                 });
-            });
+            }
 
             foreach (VALUES as $value) {
                 $description = var_export($value, true);
