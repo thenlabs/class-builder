@@ -7,7 +7,6 @@ use ThenLabs\ClassBuilder\Exception\InvalidClassNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidConstantNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidMethodNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidPropertyNameException;
-use ThenLabs\ClassBuilder\Exception\InvalidPropertyTypeException;
 use ThenLabs\ClassBuilder\Exception\InvalidNamespaceException;
 use ThenLabs\ClassBuilder\Exception\InvalidAccessException;
 use ThenLabs\ClassBuilder\Exception\ExistentClassException;
@@ -632,14 +631,6 @@ testCase('ClassBuilderTest.php', function () {
                 $this->property->setAccess($invalidAccess);
             });
 
-            test('$property->setType("abcdef") throwns an InvalidPropertyTypeException', function () {
-                $type = uniqid();
-                $this->expectException(InvalidPropertyTypeException::class);
-                $this->expectExceptionMessage("Invalid type '{$type}' for property '{$this->property->getName()}'.");
-
-                $this->property->setType($type);
-            });
-
             testCase('$property->setAccess("public")', function () {
                 setUp(function () {
                     $this->result = $this->property->setAccess('public');
@@ -704,21 +695,24 @@ testCase('ClassBuilderTest.php', function () {
                 });
             });
 
-            // testCase('$property->setType()', function () {
-            //     setUp(function () {
-            //         $this->result = $this->property->setType('boolean');
-            //     });
+            testCase('$property->setType("string")', function () {
+                setUp(function () {
+                    $this->property->setValue('');
+                    $this->result = $this->property->setType('string');
+                });
 
-            //     useMacro('returns the same property builder');
+                useMacro('returns the same property builder');
 
-            //     useMacro('ends, install and reflect the class', function () {
-            //         test('the defined property is static', function () {
-            //             $property = $this->reflection->getProperty($this->propertyName);
+                useMacro('ends, install and reflect the class', function () {
+                    test('the defined property type is string', function () {
+                        $property = $this->reflection->getProperty($this->propertyName);
+                        $propertyType = $property->getType();
 
-            //             $this->assertTrue($property->isStatic());
-            //         });
-            //     });
-            // });
+                        $this->assertEquals('string', $propertyType->getName());
+                        $this->assertFalse($propertyType->allowsNull());
+                    });
+                });
+            });
 
             foreach (VALUES as $value) {
                 $description = var_export($value, true);
