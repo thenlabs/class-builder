@@ -10,9 +10,13 @@ trait ValueTrait
 {
     protected $value;
 
+    protected $hasDefaultValue = false;
+
     public function setValue($value): self
     {
         $this->value = $value;
+
+        $this->hasDefaultValue = true;
 
         return $this;
     }

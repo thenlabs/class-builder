@@ -18,7 +18,8 @@ class Property extends AbstractClassMember
     public function getCode(): string
     {
         $static = $this->static ? 'static' : '';
-        $value = " = " . var_export($this->value, true);
+
+        $value = $this->hasDefaultValue ? " = " . var_export($this->value, true) : '';
 
         $comments = $this->comments ? $this->comments : '';
         if (! $comments) {
