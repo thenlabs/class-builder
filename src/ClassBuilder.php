@@ -16,6 +16,10 @@ use ThenLabs\ClassBuilder\Model\TraitMember;
  */
 class ClassBuilder
 {
+    public const ENTITY_CLASS     = 'class';
+    public const ENTITY_TRAIT     = 'trait';
+    public const ENTITY_INTERFACE = 'interface';
+
     use CommentTrait;
     use AbstractTrait;
 
@@ -25,6 +29,7 @@ class ClassBuilder
     protected $interfaces = [];
     protected $final = false;
     protected $members = [];
+    protected $entityType = 'class';
     protected static $installedInstances = [];
 
     public function __construct(?string $name = null)
@@ -251,6 +256,16 @@ class ClassBuilder
         $reflectionClass = new \ReflectionClass($fcqn);
 
         return $reflectionClass->newInstanceArgs($args);
+    }
+
+    public function getEntityType(): string
+    {
+        return $this->entityType;
+    }
+
+    public function setEntityType(string $entityType): void
+    {
+        throw new Exception\InvalidEntityTypeException($entityType);
     }
 
     public function getCode(): string

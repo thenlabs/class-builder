@@ -9,6 +9,7 @@ use ThenLabs\ClassBuilder\Exception\InvalidMethodNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidPropertyNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidNamespaceException;
 use ThenLabs\ClassBuilder\Exception\InvalidAccessException;
+use ThenLabs\ClassBuilder\Exception\InvalidEntityTypeException;
 use ThenLabs\ClassBuilder\Exception\ExistentClassException;
 use ThenLabs\ClassBuilder\Exception\UnexistentClassException;
 use ThenLabs\ClassBuilder\Exception\UnexistentInterfaceException;
@@ -274,6 +275,19 @@ testCase('ClassBuilderTest.php', function () {
 
         test('$builder->getInterfaces() === []', function () {
             $this->assertSame([], $this->builder->getInterfaces());
+        });
+
+        test('$builder->getEntityType() === "class"', function () {
+            $this->assertSame(ClassBuilder::ENTITY_CLASS, $this->builder->getEntityType());
+        });
+
+        test('$builder->setEntity(uniqid()) throwns an InvalidEntityTypeException', function () {
+            $invalidEntityType = uniqid();
+
+            $this->expectException(InvalidEntityTypeException::class);
+            $this->expectExceptionMessage("The value '{$invalidEntityType}' is an invalid entity type. The valid values are 'class', 'trait' or 'interface'.");
+
+            $this->builder->setEntityType($invalidEntityType);
         });
 
         test('$builder->extends("UnexistentClass") throwns an UnexistentClassException when the specified class not exists', function () {
