@@ -281,7 +281,7 @@ testCase('ClassBuilderTest.php', function () {
             $this->assertSame(ClassBuilder::ENTITY_CLASS, $this->builder->getEntityType());
         });
 
-        test('$builder->setEntity(uniqid()) throwns an InvalidEntityTypeException', function () {
+        test('$builder->setEntityType(uniqid()) throwns an InvalidEntityTypeException', function () {
             $invalidEntityType = uniqid();
 
             $this->expectException(InvalidEntityTypeException::class);
@@ -1698,6 +1698,20 @@ testCase('ClassBuilderTest.php', function () {
                     $instance->setName($name);
 
                     $this->assertSame($name, $instance->getName());
+                });
+            });
+        });
+
+        testCase('$builder->setEntityType(ClassBuilder::ENTITY_TRAIT)', function () {
+            setUp(function () {
+                $this->result = $this->builder->setEntityType(ClassBuilder::ENTITY_TRAIT);
+            });
+
+            useMacro('returns the same builder');
+
+            useMacro('install and reflect the class', function () {
+                test('the trait has been created', function () {
+                    $this->assertTrue(trait_exists($this->builder->getFCQN()));
                 });
             });
         });

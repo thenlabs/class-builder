@@ -263,9 +263,17 @@ class ClassBuilder
         return $this->entityType;
     }
 
-    public function setEntityType(string $entityType): void
+    public function setEntityType(string $entityType): self
     {
-        throw new Exception\InvalidEntityTypeException($entityType);
+        $validTypes = [self::ENTITY_CLASS, self::ENTITY_TRAIT, self::ENTITY_INTERFACE];
+
+        if (! in_array($entityType, $validTypes)) {
+            throw new Exception\InvalidEntityTypeException($entityType);
+        }
+
+        $this->entityType = $entityType;
+
+        return $this;
     }
 
     public function getCode(): string
@@ -310,7 +318,7 @@ class ClassBuilder
             {$namespace}
 
             {$comments}
-            {$final} {$abstract} class {$this->name} {$extends} {$implements}
+            {$final} {$abstract} {$this->entityType} {$this->name} {$extends} {$implements}
             {
                 {$members}
             }
