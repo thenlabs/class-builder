@@ -13,9 +13,11 @@ use ThenLabs\ClassBuilder\Exception\ExistentClassException;
 use ThenLabs\ClassBuilder\Exception\UnexistentClassException;
 use ThenLabs\ClassBuilder\Exception\UnexistentInterfaceException;
 use ThenLabs\ClassBuilder\Exception\UnexistentTraitException;
+use ThenLabs\ClassBuilder\Exception\UnsupportedFeatureException;
 use Doctrine\Common\Annotations\AnnotationReader;
 use ReflectionClass;
 use Closure;
+
 setTestCaseClass(TestCase::class);
 setTestCaseNamespace(__NAMESPACE__);
 
@@ -694,6 +696,14 @@ testCase('ClassBuilderTest.php', function () {
                     });
                 });
             });
+
+            if (version_compare(PHP_VERSION, '7.4.0', '<')) {
+                test('$property->setType() throwns UnsupportedFeatureException', function () {
+                    $this->expectException(UnsupportedFeatureException::class);
+
+                    $this->property->setType('string');
+                });
+            }
 
             if (version_compare(PHP_VERSION, '7.4.0', '>=')) {
                 testCase('$property->setType("string")', function () {

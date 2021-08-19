@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ThenLabs\ClassBuilder\Model;
 
+use ThenLabs\ClassBuilder\Exception\UnsupportedFeatureException;
+
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
  */
@@ -45,6 +47,10 @@ class Property extends AbstractClassMember
 
     public function setType(string $type): self
     {
+        if (version_compare(PHP_VERSION, '7.4.0', '<')) {
+            throw new UnsupportedFeatureException('The typed properties are only supported from PHP 7.4');
+        }
+
         $this->type = $type;
 
         return $this;
