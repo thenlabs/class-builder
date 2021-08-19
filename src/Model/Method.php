@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace ThenLabs\ClassBuilder\Model;
 
-use ReflectionFunction;
 use Closure;
+use ReflectionFunction;
+use ThenLabs\ClassBuilder\ClassBuilder;
 
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
@@ -157,10 +158,17 @@ class Method extends AbstractClassMember
             }
         }
 
-        return "
-            {$comments}
-            {$abstract} {$this->access} {$static} function {$this->name}({$parametersStr}) {$returnTypeStr}
-            {$body}
-        ";
+        if ($this->builder->getEntityType() === ClassBuilder::ENTITY_INTERFACE) {
+            return "
+                {$comments}
+                {$abstract} {$this->access} {$static} function {$this->name}({$parametersStr}) {$returnTypeStr};
+            ";
+        } else {
+            return "
+                {$comments}
+                {$abstract} {$this->access} {$static} function {$this->name}({$parametersStr}) {$returnTypeStr}
+                {$body}
+            ";
+        }
     }
 }

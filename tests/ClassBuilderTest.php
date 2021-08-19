@@ -1716,6 +1716,39 @@ testCase('ClassBuilderTest.php', function () {
             });
         });
 
+        testCase('$builder->setEntityType(ClassBuilder::ENTITY_INTERFACE)', function () {
+            setUp(function () {
+                $this->result = $this->builder->setEntityType(ClassBuilder::ENTITY_INTERFACE);
+            });
+
+            useMacro('returns the same builder');
+
+            useMacro('install and reflect the class', function () {
+                test('the trait has been created', function () {
+                    $this->assertTrue(interface_exists($this->builder->getFCQN()));
+                });
+            });
+
+            test(function () {
+                $this->builder
+                    ->addConstant('MY_CONSTANT')
+                        ->setAccess('private')
+                        ->setValue('myValue')
+                    ->end()
+                    ->addProperty('myProperty')
+                    ->end()
+                    ->addMethod('myMethod', function (int $a, ?float $b, $c = null): string {
+                        return '';
+                    })
+                    ->end()
+                ;
+
+                $this->builder->install();
+
+                $this->assertTrue(interface_exists($this->builder->getFCQN()));
+            });
+        });
+
         test('$builder->newInstance($arg1, $arg2)', function () {
             $builder = (new ClassBuilder)
                 ->addProperty('name')->setAccess('protected')->end()

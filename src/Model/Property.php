@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ThenLabs\ClassBuilder\Model;
 
+use ThenLabs\ClassBuilder\ClassBuilder;
 use ThenLabs\ClassBuilder\Exception\UnsupportedFeatureException;
 
 /**
@@ -19,6 +20,10 @@ class Property extends AbstractClassMember
 
     public function getCode(): string
     {
+        if ($this->builder->getEntityType() === ClassBuilder::ENTITY_INTERFACE) {
+            return '';
+        }
+
         $static = $this->static ? 'static' : '';
 
         $value = $this->hasDefaultValue ? " = " . var_export($this->value, true) : '';
