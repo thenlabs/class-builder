@@ -299,6 +299,10 @@ testCase('ClassBuilderTest.php', function () {
             $this->builder->extends($unexistentClassName);
         });
 
+        test('$builder->getConstant(uniqid()) === null', function () {
+            $this->assertNull($this->builder->getConstant(uniqid()));
+        });
+
         testCase('$builder->implements("Interface1", "Interface2", ...) causes $builder->addInterface("Interface1"); $builder->addInterface("Interface2"); ...', function () {
             test(function () {
                 $builder = $this->getMockBuilder(ClassBuilder::class)
@@ -951,6 +955,13 @@ testCase('ClassBuilderTest.php', function () {
                     });
                 });
             }
+
+            test('$builder->getConstant($constantName) returns the model when exists', function () {
+                $this->assertSame(
+                    $this->constant,
+                    $this->builder->getConstant($this->constantName)
+                );
+            });
 
             test('$constant->setAccess("invalidAccess") throwns an InvalidAccessException', function () {
                 $invalidAccess = uniqid('access');

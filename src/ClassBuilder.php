@@ -203,6 +203,19 @@ class ClassBuilder
         return $constant;
     }
 
+    public function getConstant(string $name): ?Constant
+    {
+        foreach ($this->members as $member) {
+            if ($member instanceof Constant &&
+                $member->getName() === $name
+            ) {
+                return $member;
+            }
+        }
+
+        return null;
+    }
+
     public function addMethod(string $name, ?Closure $closure = null): Method
     {
         if (! Helpers::validNameForClassMember($name)) {
