@@ -897,6 +897,20 @@ testCase('ClassBuilderTest.php', function () {
 
                 useMacro('$property->setDocComment($comments)');
             });
+
+            testCase('$builder->removeProperty("propertyName")', function () {
+                setUp(function () {
+                    $this->builder->removeProperty($this->propertyName);
+                });
+
+                useMacro('ends, install and reflect the class', function () {
+                    test('the class has not the property', function () {
+                        $this->expectException(\ReflectionException::class);
+
+                        $this->reflection->getProperty($this->propertyName);
+                    });
+                });
+            });
         });
 
         testCase('$builder->addConstant($constantName)', function () {

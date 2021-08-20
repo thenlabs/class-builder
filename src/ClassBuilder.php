@@ -202,6 +202,17 @@ class ClassBuilder
         return null;
     }
 
+    public function removeProperty(string $name): void
+    {
+        foreach ($this->members as $key => $member) {
+            if ($member instanceof Property &&
+                $member->getName() === $name
+            ) {
+                unset($this->members[$key]);
+            }
+        }
+    }
+
     public function addConstant(string $name): Constant
     {
         if (! Helpers::validNameForClassMember($name)) {
