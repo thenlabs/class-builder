@@ -216,6 +216,17 @@ class ClassBuilder
         return null;
     }
 
+    public function removeConstant(string $name): void
+    {
+        foreach ($this->members as $key => $member) {
+            if ($member instanceof Constant &&
+                $member->getName() === $name
+            ) {
+                unset($this->members[$key]);
+            }
+        }
+    }
+
     public function addMethod(string $name, ?Closure $closure = null): Method
     {
         if (! Helpers::validNameForClassMember($name)) {

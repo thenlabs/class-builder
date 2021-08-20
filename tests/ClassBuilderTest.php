@@ -1034,6 +1034,18 @@ testCase('ClassBuilderTest.php', function () {
                     });
                 });
             });
+
+            testCase('$builder->removeConstant($constantName)', function () {
+                setUp(function () {
+                    $this->builder->removeConstant($this->constantName);
+                });
+
+                useMacro('ends, install and reflect the class', function () {
+                    test('the class has not the constant', function () {
+                        $this->assertFalse($this->reflection->hasConstant($this->constantName));
+                    });
+                });
+            });
         });
 
         testCase('$builder->addMethod($methodName)', function () {
