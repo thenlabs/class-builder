@@ -258,6 +258,17 @@ class ClassBuilder
         return null;
     }
 
+    public function removeMethod(string $name): void
+    {
+        foreach ($this->members as $key => $member) {
+            if ($member instanceof Method &&
+                $member->getName() === $name
+            ) {
+                unset($this->members[$key]);
+            }
+        }
+    }
+
     public function __toString()
     {
         return $this->getFCQN();

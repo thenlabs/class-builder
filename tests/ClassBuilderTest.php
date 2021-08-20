@@ -1653,6 +1653,20 @@ testCase('ClassBuilderTest.php', function () {
                     $this->assertEquals("hi {$name}", $instance->hi($name));
                 });
             });
+
+            testCase('$builder->removeMethod($methodName)', function () {
+                setUp(function () {
+                    $this->builder->removeMethod($this->methodName);
+                });
+
+                useMacro('install and reflect the class', function () {
+                    test('the method has not the method', function () {
+                        $this->expectException(\ReflectionException::class);
+
+                        $this->reflection->getMethod($this->methodName);
+                    });
+                });
+            });
         });
 
         test('$builder->use(Trait1::class) throwns UnexistentTraitException when the trait not exists', function () {
