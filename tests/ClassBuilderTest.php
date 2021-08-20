@@ -307,6 +307,10 @@ testCase('ClassBuilderTest.php', function () {
             $this->assertNull($this->builder->getMethod(uniqid()));
         });
 
+        test('$builder->getProperty(uniqid()) === null', function () {
+            $this->assertNull($this->builder->getProperty(uniqid()));
+        });
+
         testCase('$builder->implements("Interface1", "Interface2", ...) causes $builder->addInterface("Interface1"); $builder->addInterface("Interface2"); ...', function () {
             test(function () {
                 $builder = $this->getMockBuilder(ClassBuilder::class)
@@ -653,6 +657,13 @@ testCase('ClassBuilderTest.php', function () {
                 $this->expectExceptionMessage("The access '{$invalidAccess}' is invalid. The accepted values they are 'public', 'private' or 'protected'.");
 
                 $this->property->setAccess($invalidAccess);
+            });
+
+            test('$builder->getProperty("propertyName")', function () {
+                $this->assertSame(
+                    $this->property,
+                    $this->builder->getProperty($this->propertyName)
+                );
             });
 
             testCase('$property->setAccess("public")', function () {

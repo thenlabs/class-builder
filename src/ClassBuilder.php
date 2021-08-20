@@ -189,6 +189,19 @@ class ClassBuilder
         return $property;
     }
 
+    public function getProperty(string $name): ?Property
+    {
+        foreach ($this->members as $member) {
+            if ($member instanceof Property &&
+                $member->getName() === $name
+            ) {
+                return $member;
+            }
+        }
+
+        return null;
+    }
+
     public function addConstant(string $name): Constant
     {
         if (! Helpers::validNameForClassMember($name)) {
