@@ -245,9 +245,17 @@ class ClassBuilder
         return $method;
     }
 
-    public function getMethod(string $name): Method
+    public function getMethod(string $name): ?Method
     {
-        return $this->members["method_{$name}"];
+        foreach ($this->members as $member) {
+            if ($member instanceof Method &&
+                $member->getName() === $name
+            ) {
+                return $member;
+            }
+        }
+
+        return null;
     }
 
     public function __toString()

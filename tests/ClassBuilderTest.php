@@ -303,6 +303,10 @@ testCase('ClassBuilderTest.php', function () {
             $this->assertNull($this->builder->getConstant(uniqid()));
         });
 
+        test('$builder->getMethod(uniqid()) === null', function () {
+            $this->assertNull($this->builder->getMethod(uniqid()));
+        });
+
         testCase('$builder->implements("Interface1", "Interface2", ...) causes $builder->addInterface("Interface1"); $builder->addInterface("Interface2"); ...', function () {
             test(function () {
                 $builder = $this->getMockBuilder(ClassBuilder::class)
