@@ -11,11 +11,6 @@ class Constant extends AbstractClassMember
     use ValueTrait;
     use AccessTrait;
 
-    public function __construct(string $name)
-    {
-        parent::__construct($name);
-    }
-
     public function getCode(): string
     {
         return "const {$this->name} = " . var_export($this->value, true) . ';';

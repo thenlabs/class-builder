@@ -177,10 +177,6 @@ class ClassBuilder
 
     public function addProperty(string $name): Property
     {
-        if (! Helpers::validNameForClassMember($name)) {
-            throw new Exception\InvalidPropertyNameException($name);
-        }
-
         $property = new Property($name);
         $property->setClassBuilder($this);
 
@@ -215,10 +211,6 @@ class ClassBuilder
 
     public function addConstant(string $name): Constant
     {
-        if (! Helpers::validNameForClassMember($name)) {
-            throw new Exception\InvalidConstantNameException($name);
-        }
-
         $constant = new Constant($name);
         $constant->setClassBuilder($this);
 
@@ -253,10 +245,6 @@ class ClassBuilder
 
     public function addMethod(string $name, ?Closure $closure = null): Method
     {
-        if (! Helpers::validNameForClassMember($name)) {
-            throw new Exception\InvalidMethodNameException($name);
-        }
-
         $method = new Method($name);
         $method->setClassBuilder($this);
 

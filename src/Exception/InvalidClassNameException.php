@@ -6,7 +6,7 @@ namespace ThenLabs\ClassBuilder\Exception;
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
  */
-class InvalidClassNameException extends ClassBuilderException
+class InvalidClassNameException extends InvalidMemberNameException
 {
     public function __construct(string $name)
     {
