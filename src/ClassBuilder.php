@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ThenLabs\ClassBuilder;
 
 use Closure;
+use ThenLabs\ClassBuilder\Model\AbstractClassMember;
 use ThenLabs\ClassBuilder\Model\CommentTrait;
 use ThenLabs\ClassBuilder\Model\AbstractTrait;
 use ThenLabs\ClassBuilder\Model\Property;
@@ -180,7 +181,7 @@ class ClassBuilder
         $property = new Property($name);
         $property->setClassBuilder($this);
 
-        $this->members[] = $property;
+        $this->addMember($property);
 
         return $property;
     }
@@ -214,7 +215,7 @@ class ClassBuilder
         $constant = new Constant($name);
         $constant->setClassBuilder($this);
 
-        $this->members[] = $constant;
+        $this->addMember($constant);
 
         return $constant;
     }
@@ -243,6 +244,16 @@ class ClassBuilder
         }
     }
 
+    public function addMember(AbstractClassMember $member): void
+    {
+        $this->members[] = $member;
+    }
+
+    public function getMembers(): array
+    {
+        return $this->members;
+    }
+
     public function addMethod(string $name, ?Closure $closure = null): Method
     {
         $method = new Method($name);
@@ -252,7 +263,7 @@ class ClassBuilder
             $method->setClosure($closure);
         }
 
-        $this->members["method_{$name}"] = $method;
+        $this->addMember($method);
 
         return $method;
     }

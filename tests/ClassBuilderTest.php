@@ -18,6 +18,7 @@ use ThenLabs\ClassBuilder\Exception\UnsupportedFeatureException;
 use Doctrine\Common\Annotations\AnnotationReader;
 use ReflectionClass;
 use Closure;
+use ThenLabs\ClassBuilder\Model\Method;
 
 setTestCaseClass(TestCase::class);
 setTestCaseNamespace(__NAMESPACE__);
@@ -309,6 +310,21 @@ testCase('ClassBuilderTest.php', function () {
 
         test('$builder->getProperty(uniqid()) === null', function () {
             $this->assertNull($this->builder->getProperty(uniqid()));
+        });
+
+        test('$builder->addMember($member)', function () {
+            $method = new Method('myMethod');
+            $method->setClassBuilder($this->builder);
+            $method->setClosure(function () {
+                return 'myValue';
+            });
+
+            $this->builder->addMember($method);
+
+            $instance = $this->builder->newInstance();
+
+            $this->assertEquals('myValue', $instance->myMethod());
+            $this->assertContains($method, $this->builder->getMembers());
         });
 
         testCase('$builder->implements("Interface1", "Interface2", ...) causes $builder->addInterface("Interface1"); $builder->addInterface("Interface2"); ...', function () {
