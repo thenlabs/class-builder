@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace ThenLabs\ClassBuilder\Model;
 
-use ThenLabs\ClassBuilder\Helpers;
 use ThenLabs\ClassBuilder\ClassBuilder;
+use ThenLabs\ClassBuilder\Exception\InvalidConstantNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidMemberNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidMethodNameException;
-use ThenLabs\ClassBuilder\Exception\InvalidConstantNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidPropertyNameException;
+use ThenLabs\ClassBuilder\Helpers;
 
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>

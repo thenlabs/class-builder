@@ -5,9 +5,8 @@ namespace ThenLabs\ClassBuilder\Tests;
 use ThenLabs\ClassBuilder\InterfaceBuilder;
 
 setTestCaseClass(TestCase::class);
-setTestCaseNamespace(__NAMESPACE__);
 
-testCase('InterfaceBuilderTest.php', function () {
+testCase('test-InterfaceBuilder.php', function () {
     testCase('$builder = new InterfaceBuilder("MyTrait")', function () {
         setUp(function () {
             $this->builder = new InterfaceBuilder('MyInterface');

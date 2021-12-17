@@ -2,26 +2,25 @@
 
 namespace ThenLabs\ClassBuilder\Tests;
 
+use Closure;
+use Doctrine\Common\Annotations\AnnotationReader;
+use ReflectionClass;
 use ThenLabs\ClassBuilder\ClassBuilder;
+use ThenLabs\ClassBuilder\Exception\ExistentClassException;
+use ThenLabs\ClassBuilder\Exception\InvalidAccessException;
 use ThenLabs\ClassBuilder\Exception\InvalidClassNameException;
 use ThenLabs\ClassBuilder\Exception\InvalidConstantNameException;
-use ThenLabs\ClassBuilder\Exception\InvalidMethodNameException;
-use ThenLabs\ClassBuilder\Exception\InvalidPropertyNameException;
-use ThenLabs\ClassBuilder\Exception\InvalidNamespaceException;
-use ThenLabs\ClassBuilder\Exception\InvalidAccessException;
 use ThenLabs\ClassBuilder\Exception\InvalidEntityTypeException;
-use ThenLabs\ClassBuilder\Exception\ExistentClassException;
+use ThenLabs\ClassBuilder\Exception\InvalidMethodNameException;
+use ThenLabs\ClassBuilder\Exception\InvalidNamespaceException;
+use ThenLabs\ClassBuilder\Exception\InvalidPropertyNameException;
 use ThenLabs\ClassBuilder\Exception\UnexistentClassException;
 use ThenLabs\ClassBuilder\Exception\UnexistentInterfaceException;
 use ThenLabs\ClassBuilder\Exception\UnexistentTraitException;
 use ThenLabs\ClassBuilder\Exception\UnsupportedFeatureException;
-use Doctrine\Common\Annotations\AnnotationReader;
-use ReflectionClass;
-use Closure;
 use ThenLabs\ClassBuilder\Model\Method;
 
 setTestCaseClass(TestCase::class);
-setTestCaseNamespace(__NAMESPACE__);
 
 define('VALUES', [
     uniqid(),
@@ -62,14 +61,14 @@ trait DummyTrait2
     }
 }
 
-testCase('ClassBuilderTest.php', function () {
-    createMacro('returns the same builder', function () {
+testCase('test-ClassBuilder.php', function () {
+    macro('returns the same builder', function () {
         test('returns the same builder', function () {
             $this->assertSame($this->result, $this->builder);
         });
     });
 
-    createMacro('install and reflect the class', function (Closure $extendMacro = null) {
+    macro('install and reflect the class', function (Closure $extendMacro = null) {
         testCase('$builder->install()', function () use ($extendMacro) {
             setUp(function () {
                 $this->builder->install();
@@ -86,7 +85,7 @@ testCase('ClassBuilderTest.php', function () {
         });
     });
 
-    createMethod('createTwoDoctrineExtensions', function () {
+    method('createTwoDoctrineExtensions', function () {
         $this->annotationNamespace = uniqid('Namespace');
 
         $this->annotationBuilder1 = new ClassBuilder(uniqid('Annotation'));
@@ -503,7 +502,7 @@ testCase('ClassBuilderTest.php', function () {
             });
         });
 
-        createMacro('$builder->setDocComment($comments)', function () {
+        macro('$builder->setDocComment($comments)', function () {
             testCase('$builder->setDocComment($comments)', function () {
                 setUp(function () {
                     $word = uniqid('word');
@@ -639,7 +638,7 @@ testCase('ClassBuilderTest.php', function () {
                 $this->property = $this->builder->addProperty($this->propertyName);
             });
 
-            createMacro('ends, install and reflect the class', function ($tests) {
+            macro('ends, install and reflect the class', function ($tests) {
                 testCase('->end()', function () use ($tests) {
                     setUp(function () {
                         $this->result = $this->property->end();
@@ -653,7 +652,7 @@ testCase('ClassBuilderTest.php', function () {
                 });
             });
 
-            createMacro('returns the same property builder', function () {
+            macro('returns the same property builder', function () {
                 test('returns the same property builder', function () {
                     $this->assertSame($this->property, $this->result);
                 });
@@ -834,7 +833,7 @@ testCase('ClassBuilderTest.php', function () {
                 });
             }
 
-            createMacro('$property->setDocComment($comments)', function () {
+            macro('$property->setDocComment($comments)', function () {
                 testCase('$property->setDocComment($comments)', function () {
                     setUp(function () {
                         $word = uniqid('word');
@@ -936,7 +935,7 @@ testCase('ClassBuilderTest.php', function () {
                 $this->constant = $this->builder->addConstant($this->constantName);
             });
 
-            createMacro('ends, install and reflect the class', function ($tests = null) {
+            macro('ends, install and reflect the class', function ($tests = null) {
                 testCase('->end()', function () use ($tests) {
                     setUp(function () {
                         $this->result = $this->constant->end();
@@ -1016,13 +1015,13 @@ testCase('ClassBuilderTest.php', function () {
                 $this->constant->setAccess($invalidAccess);
             });
 
-            createMacro('returns the same constant builder', function () {
+            macro('returns the same constant builder', function () {
                 test('returns the same constant builder', function () {
                     $this->assertSame($this->constant, $this->result);
                 });
             });
 
-            createMacro('reflect the constant', function (Closure $tests) {
+            macro('reflect the constant', function (Closure $tests) {
                 useMacro('ends, install and reflect the class', function () use ($tests) {
                     test('the class has the defined constant', function () {
                         $this->assertTrue($this->reflection->hasConstant($this->constantName));
@@ -1100,7 +1099,7 @@ testCase('ClassBuilderTest.php', function () {
                 $this->methodBuilder = $this->builder->addMethod($this->methodName);
             });
 
-            createMacro('ends, install and reflect the class', function ($tests = null) {
+            macro('ends, install and reflect the class', function ($tests = null) {
                 testCase('->end()', function () use ($tests) {
                     setUp(function () {
                         $this->result = $this->methodBuilder->end();
@@ -1158,7 +1157,7 @@ testCase('ClassBuilderTest.php', function () {
                 $this->methodBuilder->setAccess($invalidAccess);
             });
 
-            createMacro('returns the same method builder', function () {
+            macro('returns the same method builder', function () {
                 test('returns the same method builder', function () {
                     $this->assertSame($this->methodBuilder, $this->result);
                 });
@@ -1252,7 +1251,7 @@ testCase('ClassBuilderTest.php', function () {
                 });
             });
 
-            createMacro('$methodBuilder->setDocComment($comments)', function () {
+            macro('$methodBuilder->setDocComment($comments)', function () {
                 testCase('$methodBuilder->setDocComment($comments)', function () {
                     setUp(function () {
                         $word = uniqid('word');
@@ -1337,7 +1336,7 @@ testCase('ClassBuilderTest.php', function () {
                     $this->builder->setNamespace('MyNamespace');
                 });
 
-                createMethod('installAndReflectTheMethod', function () {
+                method('installAndReflectTheMethod', function () {
                     $this->builder->install();
                     $this->reflection = new ReflectionClass($this->builder->getFCQN());
                     $this->reflectionMethod = $this->reflection->getMethod($this->methodName);

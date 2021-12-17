@@ -5,11 +5,11 @@ namespace ThenLabs\ClassBuilder;
 
 use Closure;
 use ThenLabs\ClassBuilder\Model\AbstractClassMember;
-use ThenLabs\ClassBuilder\Model\CommentTrait;
 use ThenLabs\ClassBuilder\Model\AbstractTrait;
-use ThenLabs\ClassBuilder\Model\Property;
+use ThenLabs\ClassBuilder\Model\CommentTrait;
 use ThenLabs\ClassBuilder\Model\Constant;
 use ThenLabs\ClassBuilder\Model\Method;
+use ThenLabs\ClassBuilder\Model\Property;
 use ThenLabs\ClassBuilder\Model\TraitMember;
 
 /**

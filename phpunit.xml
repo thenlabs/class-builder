@@ -1,12 +1,4 @@
-<phpunit bootstrap="bootstrap.php">
-    <extensions>
-        <extension class="ThenLabs\PyramidalTests\Extension"></extension>
-    </extensions>
-
-    <php>
-        <env name="PYRAMIDAL_ONLY" value="1"></env>
-    </php>
-
+<phpunit bootstrap="bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Main">
             <directory>tests</directory>

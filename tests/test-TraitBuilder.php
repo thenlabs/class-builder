@@ -5,9 +5,8 @@ namespace ThenLabs\ClassBuilder\Tests;
 use ThenLabs\ClassBuilder\TraitBuilder;
 
 setTestCaseClass(TestCase::class);
-setTestCaseNamespace(__NAMESPACE__);
 
-testCase('TraitBuilderTest.php', function () {
+testCase('test-TraitBuilder.php', function () {
     testCase('$builder = new TraitBuilder("MyTrait")', function () {
         setUp(function () {
             $this->builder = new TraitBuilder('MyTrait');

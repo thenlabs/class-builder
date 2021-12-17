@@ -1,24 +1,23 @@
-<div align="center">
-    <a href="https://github.com/thenlabs/class-builder/blob/v1/LICENSE.txt" target="_blank">
-        <img src="https://img.shields.io/github/license/thenlabs/class-builder?style=for-the-badge">
-    </a>
-    <img src="https://img.shields.io/packagist/php-v/thenlabs/class-builder?style=for-the-badge">
-    <a href="https://travis-ci.com/github/thenlabs/class-builder" target="_blank">
-        <img src="https://img.shields.io/travis/com/thenlabs/class-builder?style=for-the-badge">
-    </a>
-    <a href="https://twitter.com/ThenLabsOrg" target="_blank">
-        <img src="https://img.shields.io/twitter/follow/thenlabs?style=for-the-badge">
-    </a>
-</div>
+# ClassBuilder
 
-<br>
+Dynamic management of classes, traits and interfaces in PHP.
 
-<h1 align="center">ClassBuilder</h1>
-<h3 align="center">Dynamic management of classes, traits and interfaces in PHP.</h3>
+>If you like this project gift us a ⭐.
 
-<br>
+## Documentation.
 
-The next example shows a way to create dinamically a PHP class using our `ClassBuilder`. Learn more in the documentation.
+1. English (Pending)
+2. [Español](doc/es/index.md)
+
+## Installation.
+
+    $ composer require thenlabs/class-builder
+
+>Require PHP >= 7.2
+
+## Example.
+
+The next example shows a way to create dinamically a PHP class using our `ClassBuilder`.
 
 ```php
 <?php
@@ -46,28 +45,19 @@ $andy->getName() === 'Andy';            // true
 $andy instanceof \ThenLabs\Demo\Person; // true
 ```
 
-## 📖 Documentation.
+## Development.
 
-1. 🇬🇧 English (Pending)
-2. [🇪🇸 Español](https://thenlabs.org/es/doc/class-builder/master/index.html)
-
-## 🧪 Running the tests.
-
-All the tests of this project was written with our testing framework [PyramidalTests][pyramidal-tests] wich is an extension of [PHPUnit][phpunit].
-
-After clone this repository, install the Composer dependencies:
+Clone this repository and install the Composer dependencies.
 
     $ composer install
 
-Run PHPUnit:
+### Running the tests.
 
-    $ ./vendor/bin/phpunit
+All the tests of this project was written with our testing framework [PyramidalTests][pyramidal-tests] wich is based on [PHPUnit][phpunit].
+
+Run tests:
+
+    $ composer test
 
 [phpunit]: https://phpunit.de
 [pyramidal-tests]: https://github.com/thenlabs/pyramidal-tests
-
-If you want to run the tests with a specific version of PHP, it is possible to use Docker as follows:
-
-    $ docker run -it --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp php:7.2-cli php vendor/bin/phpunit
-
->Change 7.2 for the desired PHP version.
