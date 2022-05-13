@@ -491,6 +491,10 @@ testCase('test-ClassBuilder.php', function () {
                         $this->assertTrue($this->reflection->implementsInterface($this->interfaceFCQN));
                     });
                 });
+
+                test('$builder->getInterfaces() returns an array with all the implemented interfaces', function () {
+                    $this->assertEquals([$this->interfaceFCQN], $this->builder->getInterfaces());
+                });
             });
 
             testCase('$builder->implements($interfaceName)', function () {

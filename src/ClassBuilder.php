@@ -146,7 +146,7 @@ class ClassBuilder
 
     public function getInterfaces(): array
     {
-        return [];
+        return $this->interfaces;
     }
 
     public function implements(string ...$interfaces): self
